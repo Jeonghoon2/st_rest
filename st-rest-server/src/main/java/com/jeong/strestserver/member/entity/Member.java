@@ -1,5 +1,6 @@
 package com.jeong.strestserver.member.entity;
 
+import com.jeong.strestserver.member.dto.MemberRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -44,6 +45,15 @@ public class Member {
         this.birthdate = birthdate;
         this.gender = gender;
         this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    public void updateMember(MemberRequestDto memberRequestDto) {
+        this.email = memberRequestDto.getEmail();
+        this.password = memberRequestDto.getPassword();
+        this.name = memberRequestDto.getName();
+        this.birthdate = memberRequestDto.getBirthdate();
+        this.gender = memberRequestDto.getGender();
         this.updatedAt = LocalDateTime.now();
     }
 
