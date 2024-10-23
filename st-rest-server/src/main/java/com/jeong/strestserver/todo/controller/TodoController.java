@@ -19,6 +19,7 @@ public class TodoController {
 
     private final TodoService todoService;
 
+    /* C - Create */
     @PostMapping("/create")
     public ResponseEntity<TodoResponseDto> createTodo(@RequestBody TodoRequestDto requestDto) {
 
@@ -28,6 +29,7 @@ public class TodoController {
         return ResponseEntity.ok().body(todo);
     }
 
+    /* R - Read */
     /* http://localhost:8080/api/v1/todo/get/all */
     @GetMapping("/get/all")
     public ResponseEntity<List<TodoEntity>> findByAll() {
@@ -35,7 +37,7 @@ public class TodoController {
         return ResponseEntity.ok().body(all);
     }
 
-
+    /* U - Update */
     /* http://localhost:8080/update/complete/{id}/{completed} */
     @PutMapping("/update/complete/{id}/{completed}")
     public ResponseEntity<TodoEntity> updateComplete(
@@ -46,6 +48,7 @@ public class TodoController {
         return ResponseEntity.ok().body(todoEntity);
     }
 
+    /* D - Delete */
     /* http://localhost:8080/delete*/
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteTodo(

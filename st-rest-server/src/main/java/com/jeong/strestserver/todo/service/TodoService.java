@@ -18,7 +18,7 @@ public class TodoService {
 
     private final TodoRepository todoRepository;
 
-    /* 할일 저장 */
+    /* Todo 저장 */
     @Transactional
     public TodoResponseDto createTodo(TodoRequestDto requestDto) {
         /* TodoEntity 형태의 Todo 만들기 */
@@ -31,10 +31,18 @@ public class TodoService {
         return new TodoResponseDto(save);
     }
 
-
     /*
-    * select * from todo where id = 1;
+    * Todo 모두 조회
+    * todoRepository.findAll() = select * from todo
     * */
+    public List<TodoEntity> findAll() {
+        return todoRepository.findAll();
+    }
+
+    /**
+     * Todo 수정
+     * todoRepository.findById(id) = select * from todo where id = 1;
+     * */
     @Transactional
     public TodoEntity updateComplete(Integer id, Boolean completed) {
         Optional<TodoEntity> findById = todoRepository.findById(id);
@@ -44,12 +52,9 @@ public class TodoService {
         return todoEntity;
     }
 
-    public List<TodoEntity> findAll() {
-        return todoRepository.findAll();
-    }
-
     /*
-    * delete from todo where id = 1;
+    * Todo 삭제
+    * todoRepository.delete(todoEntity) = delete from todo where id = 1;
     * */
     public void deleteTodo(Integer id) {
 
