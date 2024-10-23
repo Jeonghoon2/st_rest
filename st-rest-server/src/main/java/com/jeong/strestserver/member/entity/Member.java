@@ -50,7 +50,6 @@ public class Member {
 
     public void updateMember(MemberRequestDto memberRequestDto) {
         this.email = memberRequestDto.getEmail();
-        this.password = memberRequestDto.getPassword();
         this.name = memberRequestDto.getName();
         this.birthdate = memberRequestDto.getBirthdate();
         this.gender = memberRequestDto.getGender();

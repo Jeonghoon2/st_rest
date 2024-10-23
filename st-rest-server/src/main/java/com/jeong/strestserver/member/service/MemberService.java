@@ -6,6 +6,7 @@ import com.jeong.strestserver.member.entity.Member;
 import com.jeong.strestserver.member.repository.MemberRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
