@@ -1,0 +1,15 @@
+services:
+  database:
+    image: mariadb
+    container_name: p-mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_USER: maria
+      MARIADB_PASSWORD: root
+      MARIADB_DATABASE: encore
+    #volumes:
+    #  - ./src/main/resources/db_config/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 6033:3306
+
+  
