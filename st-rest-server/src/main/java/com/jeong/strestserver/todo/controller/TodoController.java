@@ -30,19 +30,29 @@ public class TodoController {
 
     /* http://localhost:8080/api/v1/todo/get/all */
     @GetMapping("/get/all")
-    public ResponseEntity<List<TodoEntity>> findByAll(){
+    public ResponseEntity<List<TodoEntity>> findByAll() {
         List<TodoEntity> all = todoService.findAll();
         return ResponseEntity.ok().body(all);
     }
 
 
-    /* http://localhost:8080/update/complete?id=1&check=true */
+    /* http://localhost:8080/update/complete/{id}/{completed} */
     @PutMapping("/update/complete/{id}/{completed}")
     public ResponseEntity<TodoEntity> updateComplete(
             @PathVariable("id") Integer id,
             @PathVariable("completed") Boolean completed
-            ) {
+    ) {
         TodoEntity todoEntity = todoService.updateComplete(id, completed);
         return ResponseEntity.ok().body(todoEntity);
+    }
+
+    /* http://localhost:8080/delete*/
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteTodo(
+            @RequestParam Integer id
+    ) {
+        todoService.deleteTodo(id);
+
+        return ResponseEntity.ok().body("성공적으로 Todo를 삭제 하였습니다.");
     }
 }

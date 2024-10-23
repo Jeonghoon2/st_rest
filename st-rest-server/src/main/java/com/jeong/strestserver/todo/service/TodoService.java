@@ -47,4 +47,15 @@ public class TodoService {
     public List<TodoEntity> findAll() {
         return todoRepository.findAll();
     }
+
+    /*
+    * delete from todo where id = 1;
+    * */
+    public void deleteTodo(Integer id) {
+
+        /* 삭제할 Todo 찾기 */
+        TodoEntity todoEntity = todoRepository.findById(id).get();
+
+        todoRepository.delete(todoEntity);
+    }
 }
